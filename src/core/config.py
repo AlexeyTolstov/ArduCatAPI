@@ -23,7 +23,10 @@ class Settings(BaseSettings):
         return f"mysql+asyncmy://{self.MySQL_USERNAME}:{self.MySQL_PASSWORD}@{self.MySQL_HOST}:{self.MySQL_PORT}/{self.MySQL_DATABASE}"
 
 
-    model_config = SettingsConfigDict(env_file=".env")
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        extra="ignore"
+    )
 
 
 
