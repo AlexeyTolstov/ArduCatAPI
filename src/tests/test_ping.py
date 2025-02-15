@@ -1,12 +1,9 @@
-import pytest
-from fastapi.testclient import TestClient
-from app import app
+from .confest import *
 
 
-client = TestClient(app)
-
-def test_ping():
+@pytest.mark.asyncio
+async def test_ping(client, db_session):
     """Checks server availability at /ping endpoint."""
 
-    response = client.get("/ping")
+    response = await client.get("/ping")
     assert response.status_code == 200, f"Error: {response.status_code}"
